@@ -1,1 +1,10 @@
 <h1>Listar tarefa</h1>
+
+{{#each tarefas}}
+    ID: {{id}} <br>
+    Nome: {{nome}} <br>
+    Descrição: {{descricao}} <br>
+    Cadastrado: {{#formatDate createdAt}} {{/formatDate}} <br>
+    Atualizado: {{#formatDate updatedAt}} {{/formatDate}} <br>
+    <hr>
+{{/each}}
