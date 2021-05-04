@@ -45,13 +45,23 @@ app.post('/add-tarefa', function(req, res) {
         nome: req.body.nome,
         descricao: req.body.descricao
     }).then(function() {
-        // res.send("Tarefa cadastrada com sucesso!");
         res.redirect('/tarefa');
     }).catch(function(erro) {
         res.send("Erro ao cadastrar tarefa: " + erro);
     });
-    // res.send("Nome: " + req.body.nome + "<br>Descrição: " + req.body.descricao + "<br>");
 
+});
+
+app.get('/del-tarefa/:id', function(req, res) {
+    Tarefa.destroy({
+        where: { 'id': req.params.id }
+    }).then(function() {
+        // res.send("Tarefa apagada com sucesso!")
+        res.redirect('/tarefa');
+    }).catch(function() {
+        res.send("Tarefa não foi apagada.")
+
+    });
 });
 
 app.listen(8080);
